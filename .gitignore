@@ -1,0 +1,8 @@
+.scala_dependencies
+project/boot/
+target/
+
+sbt-launch.jar
+
+.classpath
+.project

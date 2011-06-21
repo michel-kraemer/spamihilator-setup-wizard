@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:lift="http://liftweb.net/">
+<head>
+<meta charset="UTF-8" />
+<title>Edit page</title>
+</head>
+<body class="lift:content_id=page">
+	<div id="page" class="lift:surround?with=defaultadmin&at=content">
+	<head>
+		<script>
+		$(function() {
+			$("#screenshots-dialog").dialog({autoOpen: false, modal: true, width: 500, height: 450});
+			
+			var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+			var eventer = window[eventMethod];
+			var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+			eventer(messageEvent, function(e) {
+				var o = e.data;
+				if (o.type && o.type == "sendToEditor") {
+					var t = $("#" + o.id);
+					sendToEditor(t, o.value);
+				}
+			}, false);
+		});
+		
+		function showScreenshotsDialog() {
+			var clientslug = $("#slug").val();
+			$("#screenshots-dialog").html("<iframe id=\"screenshots-frame\" " +
+					"style=\"width: 100%; height: 98%; margin: 0px\" " +
+					"frameBorder=\"0\" scrolling=\"auto\" " +
+					"src=\"insertscreenshots.html?slug=" + clientslug + "\" />").dialog("open");
+			return false;
+		}
+		</script>
+	</head>
+	<div id="header">
+		<h1>Edit tutorial</h1>
+	</div>
+	<div id="main">
+	<div id="content">
+		<div class="lift:Edit">
+		<h2><span class="name">Name</span> <span class="version">Version</span></h2>
+		<div class="lift:Msgs?showAll=true"></div>
+		<a href="#" onclick="return showScreenshotsDialog()">Screenshots einfügen</a>
+		<form class="lift:Edit.renderForm?form=post">
+		<input type="hidden" name="slug" id="slug" />
+		<p><textarea name="text" id="text"></textarea></p>
+		<input type="submit" id="preview-button" value="Vorschau" />
+		<input type="submit" id="save-button" value="Speichern" />
+		<input type="submit" id="cancel-button" value="Abbrechen" />
+		</form>
+		<h2 class="preview-heading">Preview</h2>
+		<div class="preview">
+		Preview
+		</div>
+		</div>
+		
+		<div id="screenshots-dialog" title="Insert screenshots">
+		</div>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

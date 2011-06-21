@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:lift="http://liftweb.net/">
+<head>
+<meta charset="UTF-8" />
+<title>Welcome page</title>
+</head>
+<body class="lift:content_id=page">
+	<div id="page" class="lift:surround?with=default&at=content">
+		<div id="header">
+			<h1><span class="lift:Loc.main-title"></span></h1>
+		</div>
+		<div id="main">
+		<div id="content">
+			<div class="lift:Msgs?showAll=false"></div>
+			<span class="lift:embed?what=index_welcome"></span>
+			<form action="index.html" method="post" class="lift:Index" id="home-form">
+			<fieldset>
+				<legend><span class="lift:Loc.step1"></span></legend>
+				<span class="lift:Msg?id=mail-client&errorClass=error">error</span>
+				<p class="client">
+					<input type="radio" name="mail-client" value="" id="" />
+					<label for="">
+						<span class="name">Name</span> <span class="version">Version</span>
+					</label>
+				</p>
+			</fieldset>
+			<fieldset>
+				<legend><span class="lift:Loc.step2"></span></legend>
+				<p class="server"><label for="server"><span class="lift:Loc.server"></span></label>
+				<input type="text" name="server" id="server" /></p>
+				<p class="username"><label for="username"><span class="lift:Loc.username"></span></label>
+				<input type="text" name="username" id="username" /></p>
+			</fieldset>
+			<input type="submit" value="Weiter" />
+			</form>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

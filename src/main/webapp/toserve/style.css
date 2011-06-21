@@ -1,0 +1,168 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #ddd url("images/header-bg.png") repeat-x scroll left top;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 16px;
+	color: #333;
+}
+
+#header {
+	display: block;
+	height: 82px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+	font-family: 'PT Sans', serif;
+	color: #fff;
+	background-image: url("images/logo.png");
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+}
+
+#main {
+	width: 100%;
+	background-color: #fff;
+	padding-bottom: 60px;
+}
+
+#content {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+}
+
+#footer {
+	width: 100%;
+	margin-top: 10px;
+	background-color: #ddd;
+	font-size: 80%;
+	color: #666;
+}
+
+#footer-content {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	padding-bottom: 140px;
+}
+	
+h1 {
+	margin: 0px;
+	padding: 16px 0px 0px 90px;
+	text-shadow: #e68200 0px 0px 10px;
+	font-size: 210%;
+}
+
+.privacy-note {
+	color: #777;
+	font-style: italic;
+	font-size: 90%;
+}
+
+#home-form input[type=submit] {
+	clear: both;
+	display: block;
+}
+
+#home-form p.server label, #home-form p.username label {
+	width: 49%;
+	display: block;
+	float: left;
+}
+
+#home-form p.server input, #home-form p.username input {
+	width: 49%;
+}
+
+#add-client-form label {
+	width: 70px;
+	display: block;
+	float: left;
+	text-align: right;
+	padding-right: 10px;
+}
+
+#add-client-form .first-button {
+	margin-left: 80px;
+}
+
+#change-password-form label {
+	width: 150px;
+	display: block;
+	float: left;
+	text-align: right;
+	padding-right: 10px;
+}
+
+#change-password-form .first-button {
+	margin-left: 160px;
+}
+
+fieldset {
+	border: none;
+	padding: 0px;
+	margin: 0px 0px 16px 0px;
+	width: 50%;
+	float: left;
+}
+
+legend {
+	padding: 20px 0px 10px 0px;
+	margin: 0px;
+	font-family: Arial, sans-serif;
+	font-size: 110%;
+	font-weight: bold;
+}
+
+.error, #lift__noticesContainer___error {
+	color: #f00;
+}
+
+.authors, .date {
+	color: #999;
+	font-size: 90%;
+}
+
+.authors {
+	float: left;
+}
+
+.date:before {
+	content: "\00a0\2013\00a0";
+}
+
+.text img {
+	padding-bottom: 2em;
+}
+
+.text-with-clippy {
+	position: relative;
+}
+
+.text-with-clippy .copy {
+	position: relative;
+	top: 3px;
+	margin-left: 4px;
+}
+
+#configure-another-account {
+	padding-top: 20px;
+}
+
+textarea {
+	width: 100%;
+	height: 400px;
+}
+
+.preview {
+	padding: 10px;
+	border: 1px dashed #000;
+}
+
+.ui-widget-overlay {
+	background-image: url(jquery-ui/css/ui-lightness/images/ui-bg_flat_10_000000_40x100.png)
+}
