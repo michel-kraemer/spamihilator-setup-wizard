@@ -20,6 +20,7 @@ import scala.xml.Unparsed
 import org.pegdown.PegDownProcessor
 
 import net.liftweb.http.S
+import S.?
 
 /** Renders tutorials using the markdown syntax augmented with short tags in
   * the form <code>[tag name=value]</code>.
@@ -61,7 +62,7 @@ object TextRenderer extends Util {
     * @return the HTML code */
   private def createClippy(content: String) = {
     val flashVars = "text=" + urlencode(content) +
-      "&label=Kopieren&feedback=Kopiert!"
+      "&label=" + ?("clippy-copy") + "&feedback=" + ?("clippy-copied")
     val clippyUrl = S.hostAndPath + "/toserve/clippy/clippy.swf"
     <span class="copy">
       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
