@@ -19,6 +19,7 @@ import com.spamihilator.setupwizard.model.Screenshot
 import net.liftweb._
 import common._
 import http._
+import S.?
 import js._
 import SHtml._
 import JsCmds._
@@ -73,7 +74,7 @@ class InsertScreenshots {
         ".screenshot [id]" #> makeDeleteId(x) &
         ".title" #> x.title &
         ".delete-link" #> ((n: NodeSeq) => a(() => Confirm(
-          "Do you really want to delete \"" + x.title + "\"?", onDelete(x)), n)) &
+          ?("really-delete", x.title), onDelete(x)), n)) &
         ".insert-into-text-link" #> ((n: NodeSeq) => a(() =>
           Call("insertIntoText", makeImageTag(x)), n))
     }
@@ -90,19 +91,19 @@ class InsertScreenshots {
         case Full(f) =>
           val sd = Database.screenshotDao
           if (sd.exists(f.fileName)) {
-            S.error("A screenshot with the title " + f.fileName +
-                " has already been uploaded")
+            S.error(?("already-uploaded", f.fileName))
           } else {
             sd.insert(Screenshot(f.fileName, 0, 0, client, f.fileStream))
-            S.notice("File successfully uploaded: " + f.fileName)
+            S.notice(?("successfully-uploaded", f.fileName))
           }
         case _ =>
-          S.error("Please select a file before pressing the upload button")
+          S.error(?("select-a-file"))
       }
     }
     
     "#slug [value]" #> client.slug &
     "#screenshot-file" #> SHtml.fileUpload(f => fileHolder = Full(f)) &
-    "#upload-button" #> SHtml.onSubmitUnit(process)
+    "#upload-button" #> SHtml.onSubmitUnit(process) &
+    "#upload-button [value]" #> ?("upload")
   }
 }

@@ -7,16 +7,19 @@
 <body class="lift:content_id=page">
 	<div id="page" class="lift:surround?with=defaultadmin&at=content">
 		<div id="header">
-			<h1>Add mail client</h1>
+			<h1><span class="lift:Loc.add-client-title"></span></h1>
 		</div>
 		<div id="main">
 		<div id="content">
 			<div class="lift:Msgs?showAll=true"></div>
 			<div class="lift:Add">
 			<form action="add.html" method="post" id="add-client-form">
-			<p><label for="name">Name:</label> <input type="text" name="name" id="name" /></p>
-			<p><label for="version">Version:</label> <input type="text" name="version" id="version" /></p>
-			<p><label for="slug">Slug:</label> <input type="text" name="slug" id="slug" /></p>
+			<p><label for="name"><span class="lift:Loc.name"></span>:</label>
+			<input type="text" name="name" id="name" /></p>
+			<p><label for="version"><span class="lift:Loc.version"></span>:</label>
+			<input type="text" name="version" id="version" /></p>
+			<p><label for="slug"><span class="lift:Loc.slug"></span>:</label>
+			<input type="text" name="slug" id="slug" /></p>
 			<input type="submit" id="add-button" value="Add" class="first-button" />
 			<input type="submit" id="cancel-button" value="Cancel" />
 			</form>

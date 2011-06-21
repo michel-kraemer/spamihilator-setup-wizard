@@ -19,6 +19,7 @@ import com.spamihilator.setupwizard.db.{CurrentUserAware, Database}
 import com.spamihilator.setupwizard.model.Client
 import net.liftweb._
 import http._
+import http.S.?
 import util.Helpers._
 
 /** Snippet for the change-password page
@@ -32,28 +33,28 @@ class ChangePassword extends CurrentUserAware {
       
     def process() {
       if (newpassword.isEmpty) {
-        S.error("Please enter a new password")
+        S.error(?("enter-password"))
         return
       }
       
       if (repeat.isEmpty)  {
-        S.error("Please repeat your new password")
+        S.error(?("repeat-password"))
         return
       }
       
       if (newpassword != repeat) {
-        S.error("Passwords do not match")
+        S.error(?("do-not-match"))
         return
       }
       
       val user = Database.userDao.find(currentUsername) getOrElse {
-        S.error("You're currently not logged in")
+        S.error(?("not-logged-in"))
         return
       }
       
       val encoder = new BCryptPasswordEncoder()
       if (!encoder.isPasswordValid(user.passwordHash, oldpassword, null)) {
-        S.error("Your old password is incorrect")
+        S.error(?("incorrect-old"))
         return
       }
       
@@ -68,6 +69,8 @@ class ChangePassword extends CurrentUserAware {
     "#new" #> SHtml.password(newpassword, newpassword = _) &
     "#repeat" #> SHtml.password(repeat, repeat = _) &
     "#save-button" #> SHtml.onSubmitUnit(process) &
-    "#cancel-button" #> SHtml.onSubmitUnit(() => S.redirectTo("/admin"))
+    "#save-button [value]" #> ?("save") &
+    "#cancel-button" #> SHtml.onSubmitUnit(() => S.redirectTo("/admin")) &
+    "#cancel-button [value]" #> ?("cancel")
   }
 }

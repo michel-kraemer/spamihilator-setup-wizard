@@ -35,28 +35,28 @@
 		</script>
 	</head>
 	<div id="header">
-		<h1>Edit tutorial</h1>
+		<h1><span class="lift:Loc.edit-title"></span></h1>
 	</div>
 	<div id="main">
 	<div id="content">
 		<div class="lift:Edit">
 		<h2><span class="name">Name</span> <span class="version">Version</span></h2>
 		<div class="lift:Msgs?showAll=true"></div>
-		<a href="#" onclick="return showScreenshotsDialog()">Screenshots einfügen</a>
+		<a href="#" onclick="return showScreenshotsDialog()"><span class="lift:Loc.insert-screenshot"></span></a>
 		<form class="lift:Edit.renderForm?form=post">
 		<input type="hidden" name="slug" id="slug" />
 		<p><textarea name="text" id="text"></textarea></p>
-		<input type="submit" id="preview-button" value="Vorschau" />
-		<input type="submit" id="save-button" value="Speichern" />
-		<input type="submit" id="cancel-button" value="Abbrechen" />
+		<input type="submit" id="preview-button" value="Preview" />
+		<input type="submit" id="save-button" value="Save" />
+		<input type="submit" id="cancel-button" value="Cancel" />
 		</form>
-		<h2 class="preview-heading">Preview</h2>
+		<h2 class="preview-heading"><span class="lift:Loc.preview-title"></span></h2>
 		<div class="preview">
 		Preview
 		</div>
-		</div>
 		
 		<div id="screenshots-dialog" title="Insert screenshots">
+		</div>
 		</div>
 	</div>
 	</div>

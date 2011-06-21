@@ -24,7 +24,8 @@ TODO
 ### Developing
 
 If you like to contribute new features to the setup wizard itself, simply fork
-the GitHub repository, add your code and then send me a pull request.
+the [GitHub repository](https://github.com/michel-kraemer/spamihilator-setup-wizard),
+add your code and then send me a pull request.
 
 You need [sbt](https://github.com/harrah/xsbt) in order to build the setup
 wizard. Run the following command to create a deployable `war` file:

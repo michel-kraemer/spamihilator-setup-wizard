@@ -90,6 +90,10 @@ h1 {
 	margin-left: 80px;
 }
 
+#add-client-form input[type=text] {
+	width: 250px;
+}
+
 #change-password-form label {
 	width: 150px;
 	display: block;

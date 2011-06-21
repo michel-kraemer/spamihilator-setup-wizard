@@ -18,6 +18,7 @@ import com.spamihilator.setupwizard.db.Database
 import com.spamihilator.setupwizard.common.TextRenderer
 import net.liftweb._
 import http._
+import http.S.?
 import provider.servlet._
 import util.Helpers._
 import scala.xml.Unparsed
@@ -31,17 +32,17 @@ class Tutorial {
   def render = {
     //check request parameters
     val clientSlug = S.param("mail-client") openOr {
-      S.error("mail-client", S.?("error-slug"))
+      S.error("mail-client", ?("error-slug"))
       S.redirectTo("/")
     }
     
     val client = Database.clientDao.find(clientSlug) getOrElse {
-      S.error(S.?("error-client"))
+      S.error(?("error-client"))
       S.redirectTo("/")
     }
     
     val document = Database.documentDao.findLatest(client) getOrElse {
-      S.error(S.?("error-document"))
+      S.error(?("error-document"))
       S.redirectTo("/")
     }
     

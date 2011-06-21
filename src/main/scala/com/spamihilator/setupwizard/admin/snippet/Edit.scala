@@ -19,6 +19,7 @@ import com.spamihilator.setupwizard.model.Document
 import com.spamihilator.setupwizard.common.TextRenderer
 import net.liftweb._
 import http._
+import http.S.?
 import util.Helpers._
 import scala.xml.Unparsed
 
@@ -33,12 +34,12 @@ object Edit extends CurrentUserAware {
     * @return the mail client */
   private def getClientFromRequest() = {
     val slug = S.param("slug") openOr {
-      S.error("Please specify the mail client to be edited");
+      S.error(?("specify-mail-client"));
       S.redirectTo("/admin")
     }
     
     Database.clientDao.find(slug) getOrElse {
-      S.error("Unknown mail client")
+      S.error(?("unknown-mail-client"))
       S.redirectTo("/admin")
     }
   }
@@ -56,7 +57,8 @@ object Edit extends CurrentUserAware {
       ".preview-heading" #> blank
     else
       ".preview *" #> TextRenderer.render(p, Some("pop.server.com"),
-          Some("username")))
+          Some("username"))) &
+    "#screenshots-dialog [title]" #> ?("insert-screenshot-dialog")
   }
   
   /** Renders the edit form */
@@ -79,16 +81,19 @@ object Edit extends CurrentUserAware {
         //save document to database
         val doc = Document(text, authors, client)
         Database.documentDao.insert(doc)
-        S.notice("Tutorial successfully saved.")
+        S.notice(?("successfully-saved"))
       } else {
-        S.notice("Nothing to save.")
+        S.notice(?("nothing-to-save"))
       }
     }
     
     "#slug [value]" #> client.slug &
     "#text" #> SHtml.textareaElem(text) &
     "#preview-button" #> SHtml.onSubmitUnit(() => previewText.set(text)) &
+    "#preview-button [value]" #> ?("preview") &
     "#save-button" #> SHtml.onSubmitUnit(process) &
-    "#cancel-button" #> SHtml.onSubmitUnit(() => S.redirectTo("/admin"))
+    "#save-button [value]" #> ?("save") &
+    "#cancel-button" #> SHtml.onSubmitUnit(() => S.redirectTo("/admin")) &
+    "#cancel-button [value]" #> ?("cancel")
   }
 }

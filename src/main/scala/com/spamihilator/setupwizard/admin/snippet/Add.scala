@@ -20,6 +20,7 @@ import net.liftweb.http.RequestVar
 import net.liftweb.util.Helpers._
 import net.liftweb.http.SHtml
 import net.liftweb.http.S
+import net.liftweb.http.S.?
 
 /** Snippet for the add-mail-client page
   * @author Michel Kraemer */
@@ -34,32 +35,34 @@ object Add {
     "#version" #> SHtml.textElem(version) &
     "#slug" #> SHtml.textElem(slug) &
     "#add-button" #> SHtml.onSubmitUnit(process) &
-    "#cancel-button" #> SHtml.onSubmitUnit(() => S.redirectTo("/admin"))
+    "#add-button [value]" #> ?("add") &
+    "#cancel-button" #> SHtml.onSubmitUnit(() => S.redirectTo("/admin")) &
+    "#cancel-button [value]" #> ?("cancel")
   }
   
   /** Will be called when the user presses the add button */
   private def process() {
     //validate form
     if (name.isEmpty) {
-      S.error("Please enter a name")
+      S.error(?("enter-name"))
     }
     
     if (version.isEmpty) {
-      S.error("Please enter a version")
+      S.error(?("enter-version"))
     }
     
     if (slug.isEmpty) {
-      S.error("Please enter a slug")
+      S.error(?("enter-slug"))
     }
     
     if (S.errors.isEmpty) {
       //check if the client and/or the slug are already used
       Database.clientDao.find(name, version) match {
-        case Some(_) => S.error(name + " " + version + " does already exist")
+        case Some(_) => S.error(?("client-already-exists", name + " " + version))
         case _ =>
           Database.clientDao.find(slug) match {
-            case Some(e) => S.error("This slug is already reserved for " +
-                e.name + " " + e.version)
+            case Some(e) => S.error(?("slug-already-exists", e.name + " " +
+                e.version))
             case _ =>
               //save client to database
               val client = Client(name, version, slug)
