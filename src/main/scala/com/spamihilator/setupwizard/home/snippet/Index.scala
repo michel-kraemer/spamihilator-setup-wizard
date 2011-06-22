@@ -14,7 +14,6 @@
 
 package com.spamihilator.setupwizard.home.snippet
 
-import com.spamihilator.setupwizard.common.Util
 import com.spamihilator.setupwizard.db.Database
 import net.liftweb._
 import common._
@@ -23,7 +22,7 @@ import util.Helpers._
 
 /** Snippet for the setup wizard's main page
   * @author Michel Kraemer */
-object Index extends Util {
+object Index {
   private object server extends SessionVar("")
   private object username extends SessionVar("")
   private object client extends SessionVar("")
@@ -55,15 +54,15 @@ object Index extends Util {
     val querySeq =
       (server.is match {
         case "" => Nil
-        case s => Seq("server=" + urlencode(s))
+        case s => Seq("server=" + urlEncode(s))
       }) ++
       (username.is match {
         case "" => Nil
-        case u => Seq("username=" + urlencode(u))
+        case u => Seq("username=" + urlEncode(u))
       }) ++
       (client.is match {
         case "" => Nil
-        case c => Seq("mail-client=" + urlencode(c))
+        case c => Seq("mail-client=" + urlEncode(c))
       })
     
     val query = if (querySeq.isEmpty) "" else "?" + querySeq.mkString("&")

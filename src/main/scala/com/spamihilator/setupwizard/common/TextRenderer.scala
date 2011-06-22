@@ -21,11 +21,12 @@ import org.pegdown.PegDownProcessor
 
 import net.liftweb.http.S
 import S.?
+import net.liftweb.util.Helpers._
 
 /** Renders tutorials using the markdown syntax augmented with short tags in
   * the form <code>[tag name=value]</code>.
   * @author Michel Kraemer */
-object TextRenderer extends Util {
+object TextRenderer {
   /** Regular expression fragments */
   private val mandatoryParams = """([^\]]+)"""
   private val optionalParams = """([^\]]*)"""
@@ -61,7 +62,7 @@ object TextRenderer extends Util {
     * @param content the text to copy
     * @return the HTML code */
   private def createClippy(content: String) = {
-    val flashVars = "text=" + urlencode(content) +
+    val flashVars = "text=" + urlEncode(content) +
       "&label=" + ?("clippy-copy") + "&feedback=" + ?("clippy-copied")
     val clippyUrl = S.hostAndPath + "/toserve/clippy/clippy.swf"
     <span class="copy">
@@ -162,16 +163,16 @@ object TextRenderer extends Util {
       val filename = params.get("title") getOrElse ""
       val alt = params.get("alt") getOrElse filename
       val serverpos = params.get("server-pos") map { "&server_pos=" +
-        urlencode(_) } getOrElse ""
+        urlEncode(_) } getOrElse ""
       val usernamepos = params.get("username-pos") map { "&username_pos=" +
-        urlencode(_) } getOrElse ""
+        urlEncode(_) } getOrElse ""
       val usenewvalues = params.get("use-new-values") map {
         _.toBoolean } getOrElse false
       val qserver = if (usenewvalues) newserver else oldserver
       val qusername = if (usenewvalues) newusername else oldusername
       
-      val query = "?server=" + urlencode(qserver) + "&username=" +
-        urlencode(qusername) + serverpos + usernamepos
+      val query = "?server=" + urlEncode(qserver) + "&username=" +
+        urlEncode(qusername) + serverpos + usernamepos
       val replacement = "![" + alt + "](" + S.hostAndPath + "/images/" +
         filename + query + ")"
       
