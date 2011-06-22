@@ -57,6 +57,17 @@ h1 {
 	font-size: 210%;
 }
 
+h5 {
+	font-size: 100%;
+	font-style: italic;
+}
+
+pre {
+	background-color: #ffffaa;
+	display: block;
+	padding: 5px;
+}
+
 .privacy-note {
 	color: #777;
 	font-style: italic;

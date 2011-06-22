@@ -35,6 +35,7 @@ class Boot {
     Menu.i("Home") / "index",
     Menu.i("Tutorial") / "tutorial" >> Hidden,
     Menu.i("Admin.Home") / "admin" / "index" >> Hidden,
+    Menu.i("Admin.Help") / "admin" / "help" >> Hidden,
     Menu.i("Admin.Profile.Password") / "admin" / "changepassword" >> Hidden,
     Menu.i("Admin.Edit.Tutorial") / "admin" / "edit" >> Hidden,
     Menu.i("Admin.Add.Client") / "admin" / "add" >> Hidden,
