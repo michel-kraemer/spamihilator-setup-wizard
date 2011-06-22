@@ -44,6 +44,7 @@ class Boot {
   def boot {
     LiftRules.addToPackages("com.spamihilator.setupwizard.home")
     LiftRules.addToPackages("com.spamihilator.setupwizard.admin")
+    LiftRules.addToPackages("com.spamihilator.setupwizard.common")
     
     //force the request to be UTF-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
