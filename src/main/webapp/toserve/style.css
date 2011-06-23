@@ -49,6 +49,31 @@ body {
 	padding-top: 10px;
 	padding-bottom: 140px;
 }
+
+#footer-content a {
+	color: #666;
+	text-decoration: none;
+}
+
+#footer-content a:hover {
+	text-decoration: underline;
+}
+
+#footer-copyright {
+	float: left;
+	display: block;
+}
+
+#footer-menu {
+	float: right;
+	display: block;
+}
+
+#footer-menu li {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
 	
 h1 {
 	margin: 0px;
