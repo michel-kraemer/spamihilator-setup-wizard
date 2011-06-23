@@ -19,7 +19,13 @@ contribute:
 
 ### Writing a new tutorial
 
-TODO
+If you want to write a new tutorial and publish it on the
+[Spamihilator Website](http://www.spamihilator.com), all you have to do is
+write me an email and I will create an account for you.
+
+The tutorial editor uses [Markdown](http://daringfireball.net/projects/markdown/)
+as well as some additional elements. For a complete overview please refer to
+the [help page](https://github.com/michel-kraemer/spamihilator-setup-wizard/blob/master/src/main/webapp/admin/templates-hidden/help.md).
 
 ### Developing
 
