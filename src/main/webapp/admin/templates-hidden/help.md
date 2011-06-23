@@ -166,7 +166,7 @@ username. The following code
 will lead to the following output:
 
 **New server**: localhost  
-**New username**: pop.server.com&username
+**New username**: pop.server.com&john
 
 ### [image]
 
@@ -237,4 +237,3 @@ will be hidden.
 
 Of course, these parameters can also be used in combination with
 `use-new-values=true`.
- 
