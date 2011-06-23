@@ -2,7 +2,7 @@ seq(WebPlugin.webSettings: _*)
 
 name := "Spamihilator Online Setup Wizard"
 
-version := "1.0"
+version := "0.2"
 
 organization := "com.spamihilator"
 
